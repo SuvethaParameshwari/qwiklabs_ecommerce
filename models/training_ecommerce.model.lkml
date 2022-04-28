@@ -3,6 +3,7 @@ connection: "baby_names"
 # include all the views
 include: "/views/*.view"
 include: "/z_tests/*.lkml"
+include: "/**/*.dashboard"
 
 
 datagroup: training_ecommerce_default_datagroup {
