@@ -7,6 +7,11 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    link: {
+      label: "Link"
+      #url: "desired_url"
+      #icon_url : "url_of_an_image_file"
+    }
   }
 
   dimension_group: created {
