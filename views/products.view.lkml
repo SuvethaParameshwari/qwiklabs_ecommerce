@@ -17,7 +17,7 @@ view: products {
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
-    html: <center>{{value}}</center>}} ;;
+    html: <b><center>{{value}}</center></b>;;
   }
 
   dimension: cost {
