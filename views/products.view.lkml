@@ -17,7 +17,7 @@ view: products {
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
-    html: <b><center><font size="4" color="#166088" >category</center></b>;;
+    html: <b><center><font size="4" color="#166088" >{{rendered_value}}</center></b>;;
   }
 
   dimension: cost {
