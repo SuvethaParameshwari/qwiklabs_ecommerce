@@ -17,7 +17,7 @@ view: products {
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
-    html: <a href="https://www.google.com/" q={{value}}>{{ value }}</a> ;;
+    html: <a href="https://www.google.com/q={{value}}">{{ value }}</a> ;;
    # html: <b><center><font size="4" color="#166088" >{{rendered_value}}</center></b>;;
   }
 
