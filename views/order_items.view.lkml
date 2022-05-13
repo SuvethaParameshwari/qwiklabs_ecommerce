@@ -22,6 +22,7 @@ view: order_items {
       year
     ]
     sql: ${TABLE}.created_at ;;
+  #  html: {{ rendered_value | date: "%B, %Y" }} ;;
   }
 
   dimension_group: delivered {
