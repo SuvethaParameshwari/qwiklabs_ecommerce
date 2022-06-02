@@ -7,6 +7,7 @@ view: order_items {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+
   }
 
   dimension_group: created {
@@ -21,6 +22,7 @@ view: order_items {
       year
     ]
     sql: ${TABLE}.created_at ;;
+  #  html: {{ rendered_value | date: "%B, %Y" }} ;;
   }
 
   dimension_group: delivered {
