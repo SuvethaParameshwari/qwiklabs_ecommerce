@@ -20,7 +20,7 @@ view: order_items {
       month,
       quarter,
       year,
-      month_name     #added month name for better visual expression(Sayan Biswas)
+
     ]
     sql: ${TABLE}.created_at ;;
   #  html: {{ rendered_value | date: "%B, %Y" }} ;;
