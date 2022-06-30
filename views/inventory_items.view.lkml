@@ -12,8 +12,13 @@ view: inventory_items {
   dimension: cost {
     type: number
     sql: ${TABLE}.cost ;;
+    value_format_name: usd
   }
-
+measure: running_total {
+  type: number
+  sql: ${inventory_items.count} + coalesce(offset(${inventory_items.count},-1),0) ;;
+  value_format_name: decimal_0
+}
   dimension_group: created {
     type: time
     timeframes: [
@@ -88,4 +93,18 @@ view: inventory_items {
     type: count
     drill_fields: [id, product_name, products.name, products.id, order_items.count]
   }
+
+  measure: total_cost
+  {
+    type: sum
+    sql: ${cost} ;;
+    value_format_name: millions
+  }
+  measure: average_cost
+  {
+    type: average
+    sql: ${cost} ;;
+    value_format_name: usd
+  }
+
 }
