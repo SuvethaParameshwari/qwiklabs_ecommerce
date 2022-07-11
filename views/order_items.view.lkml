@@ -19,7 +19,8 @@ view: order_items {
       week,
       month,
       quarter,
-      year
+      year,
+
     ]
     sql: ${TABLE}.created_at ;;
   #  html: {{ rendered_value | date: "%B, %Y" }} ;;
@@ -117,7 +118,7 @@ view: order_items {
   measure: total_revenue {
     type: sum
     sql: ${sale_price} ;;
-    value_format_name: usd
+    value_format: "\"₹\"0"    #changed usd to inr(Sayan Biswas)
   }
 
   measure: total_revenue_from_completed_orders {
@@ -127,6 +128,28 @@ view: order_items {
     value_format_name: usd
   }
 
+  parameter: Date_Granularity {    #added (Sayan Biswas)
+    description: "Filter field to indicate date granularity"
+    type: unquoted
+    allowed_value: { value: "Month" }
+    allowed_value: { value: "Quarter" }
+    allowed_value: { value: "Year" }
+  }
+
+  dimension: date {       #added (Sayan Biswa)
+    description: "Granular date work around dimensiion"
+    label_from_parameter: Date_Granularity
+    sql:
+    {% if Date_Granularity._parameter_value == 'Quarter' %}
+      ${created_quarter}
+    {% elsif Date_Granularity._parameter_value == 'Month' %}
+      ${created_month}
+    {% elsif Date_Granularity._parameter_value == 'Year' %}
+      ${created_year}
+    {% else %}
+      null
+    {% endif %} ;;
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
