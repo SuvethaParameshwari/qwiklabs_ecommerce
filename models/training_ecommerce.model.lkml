@@ -57,4 +57,9 @@ explore: events {
     sql_on: ${events.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  join: search_query_1_1000 {
+    type: full_outer
+    sql_on: ${events.user_id} = ${users.id} ;;
+    relationship: many_to_one
+  }
 }
