@@ -66,6 +66,10 @@ view: users {
     type: string
     sql: ${TABLE}.last_name ;;
   }
+  dimension: name {
+    type: string
+    sql:concat(${first_name}," ",${last_name}) ;;
+  }
 
   dimension: latitude {
     type: number
